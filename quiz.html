@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" name="keywords" content="test,sito,prova " charset="UTF-8">
+    <title>quiz</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+      function Salva() {
+        for (var i = 0; i < document.quiz.elements.length - 3; i++) {
+            if (document.quiz.elements[i].type == "text" ||
+                document.quiz.elements[i].type == "textarea" ||  // Corrected typo: "textaerea" to "textarea"
+                document.quiz.elements[i].type == "select-one") {
+                if (document.quiz.elements[i].value) {
+                    localStorage.setItem(document.quiz.elements[i].name, document.quiz.elements[i].value);
+                }
+            } else if (document.quiz.elements[i].type == "checkbox") {
+                localStorage.setItem(document.quiz.elements[i].name, document.quiz.elements[i].checked);
+            }
+        }
+      }
+
+      function Carica() {
+        for (var i = 0; i < localStorage.length; i++) {
+            var chiave = localStorage.key(i);
+            var valore = localStorage.getItem(chiave);
+            if (valore){
+              if (valore == "true") {  // Corrected case to lowercase "true"
+                document.quiz.elements[chiave].checked = true;
+               } else {
+                  document.quiz.elements[chiave].value = valore
+               }
+            }
+        }
+      }
+
+      function Cancella() {
+        localStorage.clear();
+      }
+    //richiamo la funzione da java
+    var worker=new Worker("worker1.js");
+    worker.onmessage=function(event){
+        document.getElementById("sequenza").textContent+= event.data +"";
+    }
+    </script>
+</head>
+<body onload="Carica()">
+  <div class="primo"
+    
+      <form name="quiz" method="post" action="mailto:mortillarociccio@gmail.com">
+        <p>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome">
+            <br>
+            <label for="cognome">Cognome:</label>
+            <input type="text" name="cognome" id="cognome">
+            <br>
+            <input type="button" value="Salva" onclick="Salva()">
+            <input type="button" value="Cancella" onclick="Cancella()">  <!-- Corrected missing closing ">" -->
+            <input type="submit" value="Invia">
+        </p>
+      </form>
+  </div>
+  <div id="sequenza"></div>
+  <a href="" class="logo"> titolo formattato</a>
+
+   <ul class="menu">
+      <li><a href="">Home</a></li><br>
+      <li><a href="">login</a></li><br>
+      <li><a href="">info</a></li><br>
+    </ul>
+    <br>
+  <div class="content">
+    <p>
+      Enrico Fermi, uno dei fisici italiani più famosi e importanti (fu vincitore nel 1938 del premio Nobel), portò la ricerca italiana a livello internazionale <br>
+      in settori di punta quali la fisica atomica, la fisica teorica e la fisica nucleare, e contribuì alla formazione scientifica e culturale di molti suoi collaboratori <br>
+      e allievi. Dopo la sua emigrazione negli Stati Uniti (gennaio 1939), rappresentò, fino alla sua prematura morte, un riferimento per la comunità scientifica italiana.
+    </p>
+  <div class="cover">
+    <h2>cover</h2>
+  </div>
+   
+  </div>
+  <div class="grid">
+    <div class="grid-cell"><img src="https://th.bing.com/th/id/OIP.6fTCkql1sx5oNnB_GW7JEAHaE8?pid=ImgDet&rs=1"></div>
+    <div class="grid-cell"><img src="https://th.bing.com/th/id/OIP.6fTCkql1sx5oNnB_GW7JEAHaE8?pid=ImgDet&rs=1"></div>
+    <div class="grid-cell"><img src="https://th.bing.com/th/id/OIP.6fTCkql1sx5oNnB_GW7JEAHaE8?pid=ImgDet&rs=1"></div>
+    
+  </div>
+</body>
+</html>

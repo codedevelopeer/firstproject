@@ -1,0 +1,84 @@
+
+.primo{
+    border:1px solid red;
+    position:relative;
+    left:0;
+    height:600px;
+    align-items: center;
+    display: flex;
+  justify-content: center;
+  background: url("https://th.bing.com/th/id/OIP.uwu_kjgbcUsYe7ytG3BI0QHaEK?pid=ImgDet&rs=1") no-repeat center;
+  background-size: cover;
+  
+
+}
+
+
+
+.hero{
+    border:1px solid silver;
+    height: 80vh;
+    width:100%;
+    position:relative
+
+
+}
+
+.logo{
+    position:fixed;
+    border:1px solid red;
+    top:0;
+    left:0;
+    padding:5%;
+    display:block;
+}
+.menu{
+    position:fixed;
+    border:1px solid red;
+    left:0;
+    bottom:0;
+    padding:5%;
+    display:block;
+}
+.hero_title{
+    bottom:50%;
+    right:2%;
+    color:red;
+}
+.content{
+    height:2000px;
+    border:1 px solid red;
+    max-width:60%;
+    padding:2%;
+    left:400px;
+    margin:0 auto;
+
+
+}
+/* solo per cellulari*/
+@media(max-width: 768px){
+    .content{max-width:90%}
+
+}
+a{color:coral;
+text-decoration:none ;}
+p{line-height: 1.3;}
+
+.grid{
+    display:flex;
+    flex-wrap: wrap;
+}
+.grid-cell {
+    width:33.3%;
+  }
+@media(max-width:1000px){.grid-cell{width:100%
+    }}
+
+.cover{
+    
+    background:url("https://cdn.skuola.net/news_foto/2018/bellezza-natura.jpg") no-repeat center;
+    background-size:cover;
+    width:100%;
+    height:80vh;
+    margin-top:100px
+}
